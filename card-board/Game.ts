@@ -1,133 +1,109 @@
-namespace engarde {
+import {Player} from './Player';
+import {Board} from './board';
+import {CardBoardIO, Action, Reaction} from './abstCardBoardIO'
 
-    export class Game {
+export class Game {
 
-        id: number;
+    id: number;
 
-        level: number;
+    players: Player[];
 
-        players: Player[];
+    curPlayer: number;
 
-        curPlayer: number;
-        dealer: number;
+    roundStartPlayer: number;
 
-        roundStartPlayer: number;
+    round: number;
 
-        round: number;
+    board: Board;
+    
 
-        board: Board;
-        drawDeck: Deck;
-        discardDeck: Deck;
+    gameio: CardBoardIO;
 
-        egio: EnGardeIO;
+    constructor(cbio: CardBoardIO){
 
-        constructor(level: number, egio: EnGardeIO){
+        this.gameio = cbio;
+        this.gameio.readyPlayers(this.players);
 
-            this.egio = egio;
-            this.reset(level);
-            this.egio.readyPlayers(this.players);
+    }
+
+    reset(level: number){
+
+        this.round = 1;
+        this.board = new Board(this.gameio);
+        this.curPlayer = 0;
+        this.roundStartPlayer = 0;
+
+    }
+
+    public startGame() {
+
+        this.gameio.readyGame(this);
+        this.startRound(this.players[0]);
+
+    }
+
+    startRound(startPlayer: Player) {
+
+        
+    }
+
+
+    startTurn(player: Player){
+
+        
+
+    }
+
+
+    public processAction(action: Action){
+
+        
+
+    }
+
+    
+    public processReaction(reaction: Reaction){
+
+
+
+    }
+
+
+    public processTurnResult(){
+
+
+
+    }
+
+
+    nextTurn(){
+
+        if (this.curPlayer = 0){
+
+            this.curPlayer = 1;
 
         }
+        else {
 
-        reset(level: number){
-
-            this.level = level;
-            this.round = 1;
-            this.board = new Board();
-            this.drawDeck = new Deck(true);
-            this.discardDeck = new Deck();
             this.curPlayer = 0;
-            this.roundStartPlayer = 0;
-            this.dealer = 1;
 
         }
-
-        startGame() {
-
-            this.egio.readyGame(this);
-            this.startRound(this.players[0]);
-
-        }
-
-        startRound(startPlayer: Player) {
-
-            this.drawDeck.schawfulschawfulschawful();
-            this.drawDeck.deal(MAX_HAND_SIZE,[this.players[this.roundStartPlayer].getHand(), this.players[this.dealer].getHand()]);
-            this.egio.readyRound();
-            this.startTurn(startPlayer);
-        }
-
-
-        startTurn(player: Player){
-
-            this.egio.readyTurn();
-            this.egio.promptAction(player);
-
-        }
-
-
-        public processAction(action: Action){
-
             
+        this.startTurn(this.players[this.curPlayer]);
 
-        }
+    }
 
+    
+    nextRound() {
+
+        this.curPlayer++;
+        if( this.curPlayer > 1 ) this.curPlayer = 0;
+
+    }
+
+
+    public getCurrentPlayer(): Player {
         
-        processReaction(reaction: Reaction){
-
-
-
-        }
-
-
-        processTurnResult(){
-
-
-
-        }
-
-
-        collectCards(){
-
-            for(let i: number = 0; i< this.players.length; i++){
-
-                let dumpHand = this.players[i].getHand().dump();
-                this.drawDeck.addCards(dumpHand);
-
-            }
-        }
-
-
-        nextTurn(){
-
-            if (this.curPlayer = 0){
-
-                this.curPlayer = 1;
-
-            }
-            else {
-
-                this.curPlayer = 0;
-
-            }
-                
-            this.startTurn(this.players[this.curPlayer]);
-
-        }
-
-        
-        nextRound() {
-
-            this.collectCards();
-            this.curPlayer++;
-            if( this.curPlayer > 1 ) this.curPlayer = 0;
-
-        }
-
-
-        public publicGetCurrentPlayer(): Player {
-            
-            return this.players[this.curPlayer];
-        }
+        return this.players[this.curPlayer];
     }
 }

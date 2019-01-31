@@ -1,9 +1,10 @@
-namespace card_board{
+import { Game } from "./Game";
+import {CBConnInfo} from './abstCBConnInfo'
 
-    export class Player{
-
-
-
-    }
+export class Player{
+    name: string;
+    curGame: Game;
+    connInfo: CBConnInfo;
 
 }
+

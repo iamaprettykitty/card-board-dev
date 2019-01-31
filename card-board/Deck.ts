@@ -1,5 +1,7 @@
-namespace card_board {
-
+//namespace card_board {
+import {Card} from './Card'
+import {Hand} from './Hand'
+    
     export enum DrawResult {
 
         SUC, //Successfully drew
@@ -95,6 +97,16 @@ namespace card_board {
         public addCards(cards: Card[]){
             this.deckArray = this.deckArray.concat(cards);
         }
+
+        collectCards(hands: Hand[]){
+
+            for(let i: number = 0; i< hands.length; i++){
+    
+                let dumpHand = hands[i].dump();
+                this.addCards(dumpHand);
+    
+            }
+        }
     }
 
-}
+//}

@@ -1,9 +1,6 @@
-namespace card_board {
+export class Card{
 
-    export class Card{
+    id: number;
+    title: string;
 
-        id: number;
-        title: string;
-
-    }
 }
