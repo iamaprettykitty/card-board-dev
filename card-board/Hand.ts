@@ -4,6 +4,21 @@ import {Card} from './Card';
 
 export class Hand {
     
+<<<<<<< HEAD
+    private cards: number[];
+    maxSize: number = 99;
+
+    constructor(
+        c: number[] = []) {
+        
+        this.cards = c;
+    }
+
+    setMaxHandSize(m: number){
+        this.maxSize = m;
+    }
+
+=======
     cards: number[];
     maxSize: number;
 
@@ -12,8 +27,14 @@ export class Hand {
         this.cards = c;
     }
 
+>>>>>>> dc7dc1567f1572a313ba2e7c0f9898a4257ca71c
     addCard(card: number){
         this.cards.push(card);
+    }
+
+    public numCards(): number{
+
+        return this.cards.length;
     }
 
     isFull(): boolean{
@@ -38,6 +59,16 @@ export class Hand {
             returnArray.push(this.cards.pop());
         }
         return returnArray;
+    }
+
+    public discardCard(cardID): boolean {
+        for(let i:number = 0; i < this.cards.length; i++){
+            if (this.cards[i] = cardID){
+                this.cards.splice(i,1)
+                return true;
+            }
+        }
+        return false;
     }
 
 

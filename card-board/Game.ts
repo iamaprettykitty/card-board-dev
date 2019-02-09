@@ -1,6 +1,10 @@
 import {Player} from './Player';
 //import {Board} from './board';
 import {CBServer} from './abstCBServer'
+<<<<<<< HEAD
+import {Notification, Prompt} from './abstIOMessages'
+=======
+>>>>>>> dc7dc1567f1572a313ba2e7c0f9898a4257ca71c
 // import {CardBoardIO, Action, Reaction} from './abstCardBoardIO'
 
 export class Game {
@@ -39,12 +43,18 @@ export class Game {
     public startGame() {
 
         //this.gameio.readyGame(this);
+<<<<<<< HEAD
+        //this.startRound(this.players[0]);
+=======
         this.startRound(this.players[0]);
+>>>>>>> dc7dc1567f1572a313ba2e7c0f9898a4257ca71c
 
     }
 
-    startRound(startPlayer: Player) {
+    public addNewPlayer(newPlayer: Player):void {}
 
+<<<<<<< HEAD
+=======
         
     }
 
@@ -98,4 +108,5 @@ export class Game {
         
         return this.players[this.curPlayer];
     }
+>>>>>>> dc7dc1567f1572a313ba2e7c0f9898a4257ca71c
 }
