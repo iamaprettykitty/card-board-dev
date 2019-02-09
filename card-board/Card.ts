@@ -1,9 +1,6 @@
-namespace card_board {
+export class Card{
 
-    export class Card{
+    title: string;
+    getTitle():string{return this.title}
 
-        id: number;
-        title: string;
-
-    }
 }
