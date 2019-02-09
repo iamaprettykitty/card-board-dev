@@ -8,9 +8,14 @@ export class Hand {
     cards: number[];
     maxSize: number;
 
-    constructor(m:number, c: number[] = []) {
-        this.maxSize = m;
+    constructor(c: number[] = []) {
+        
         this.cards = c;
+    }
+
+    setMaxSize(m: number){
+
+        this.maxSize = m;
     }
 
     addCard(card: number){

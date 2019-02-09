@@ -1,5 +1,6 @@
 export abstract class CBMessage{
-
+    gameNum: number
+    playerNum: number
 
 }
 
