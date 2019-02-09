@@ -1,5 +1,5 @@
 const BOARD_LENGTH = 23;
-import {EnGardeIO} from './abst-EnGardeIO'
+import {EnGardeIO} from './abstEnGardeIO'
 import * as card_board from "../card-board/index"
 
 export class EGBoard extends card_board.Board{

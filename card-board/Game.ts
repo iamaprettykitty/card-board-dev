@@ -1,6 +1,7 @@
 import {Player} from './Player';
-import {Board} from './board';
-import {CardBoardIO, Action, Reaction} from './abstCardBoardIO'
+//import {Board} from './board';
+import {CBServer} from './abstCBServer'
+// import {CardBoardIO, Action, Reaction} from './abstCardBoardIO'
 
 export class Game {
 
@@ -14,22 +15,22 @@ export class Game {
 
     round: number;
 
-    board: Board;
+    //board: Board;
     
 
-    gameio: CardBoardIO;
+    server: CBServer;
 
-    constructor(cbio: CardBoardIO){
+    constructor(cbs: CBServer){
 
-        this.gameio = cbio;
-        this.gameio.readyPlayers(this.players);
+        this.server = cbs;
+        //this.server.readyPlayers(this.players);
 
     }
 
     reset(level: number){
 
         this.round = 1;
-        this.board = new Board(this.gameio);
+        //this.board = new Board(this.gameio);
         this.curPlayer = 0;
         this.roundStartPlayer = 0;
 
@@ -37,7 +38,7 @@ export class Game {
 
     public startGame() {
 
-        this.gameio.readyGame(this);
+        //this.gameio.readyGame(this);
         this.startRound(this.players[0]);
 
     }
@@ -77,17 +78,8 @@ export class Game {
 
 
     nextTurn(){
-
-        if (this.curPlayer = 0){
-
-            this.curPlayer = 1;
-
-        }
-        else {
-
-            this.curPlayer = 0;
-
-        }
+        if(this.curPlayer++ >= this.players.length)
+            this.curPlayer = 0
             
         this.startTurn(this.players[this.curPlayer]);
 

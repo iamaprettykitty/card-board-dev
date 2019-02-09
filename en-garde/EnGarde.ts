@@ -1,8 +1,8 @@
 import * as card_board from "../card-board/index"
-import {EGPlayer} from './Player'
-import {EnGardeDeck} from './EnGardeDeck'
+import {EGPlayer} from './EGPlayer'
+import {EGDeck} from './EGDeck'
 import {EGBoard} from './EGBoard'
-import {EnGardeIO, EGAction, EGReaction} from './abst-EnGardeIO'
+import {EnGardeIO, EGAction, EGReaction} from './abstEnGardeIO'
 
 export const MAX_HAND_SIZE = 5;
 
@@ -18,8 +18,8 @@ export class EnGarde extends card_board.Game{
 
     //round: number;
 
-    drawDeck: EnGardeDeck;
-    discardDeck: EnGardeDeck;
+    drawDeck: EGDeck;
+    discardDeck: EGDeck;
 
     egio: EnGardeIO;
 
@@ -36,8 +36,8 @@ export class EnGarde extends card_board.Game{
         this.level = level;
         this.round = 1;
         this.board = new EGBoard(this.egio);
-        this.drawDeck = new EnGardeDeck(true);
-        this.discardDeck = new EnGardeDeck();
+        this.drawDeck = new EGDeck(true);
+        this.discardDeck = new EGDeck();
         this.curPlayer = 0;
         this.roundStartPlayer = 0;
         this.dealer = 1;
@@ -97,23 +97,6 @@ export class EnGarde extends card_board.Game{
 
     }
 
-
-    nextTurn(){
-
-        if (this.curPlayer = 0){
-
-            this.curPlayer = 1;
-
-        }
-        else {
-
-            this.curPlayer = 0;
-
-        }
-            
-        this.startTurn(this.players[this.curPlayer] as EGPlayer);
-
-    }
 
     
     nextRound() {

@@ -4,15 +4,15 @@ import {Card} from './Card';
 
 export class Hand {
     
-    cards: Card[];
+    cards: number[];
     maxSize: number;
 
-    constructor(m:number, c: Card[] = []) {
+    constructor(m:number, c: number[] = []) {
         this.maxSize = m;
         this.cards = c;
     }
 
-    addCard(card: Card){
+    addCard(card: number){
         this.cards.push(card);
     }
 
@@ -25,14 +25,14 @@ export class Hand {
         let returnString: string = "";
         for (let i=0; i <this.cards.length; i++) {
             if (showtitle)
-                returnString = returnString + "[" + this.cards[i].title + "], "
+                returnString = returnString + "[" + this.cards[i] + "], "
             else
                 returnString = returnString + "[" + this.cards[i].toString() + "], "
         }
         return returnString;
     }
 
-    public dump(): Card[]{
+    public dump(): number[]{
         let returnArray = [];
         while (this.cards.length > 0){
             returnArray.push(this.cards.pop());
