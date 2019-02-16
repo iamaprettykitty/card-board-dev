@@ -1,5 +1,5 @@
-import {Game, CBServer, Player} from '../card-board/index'
-import { PokerCard,PokerHand } from "./index";
+import {Game, CBServer, Player, Hand} from '../card-board/index'
+import { PokerCard,PokerHand, PokerDeck } from "./index";
 
 
 export class RPPlayer extends Player{
@@ -7,7 +7,7 @@ export class RPPlayer extends Player{
 
     constructor(){
         super();
-        this.hand = new PokerHand()
+        this.hand = new PokerHand(new PokerDeck)
     }
     public giveHand(h: PokerHand): void{
         this.hand = h;
@@ -25,6 +25,10 @@ export class RPPlayer extends Player{
 
     private discardCard(cardID: number): void{
         this.hand.discardCard(cardID)
+    }
+
+    public getHand(): PokerHand{
+        return this.hand
     }
 
 }

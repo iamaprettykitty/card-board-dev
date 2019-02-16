@@ -1,17 +1,27 @@
-import {Game, Hand, CBServer, Prompt, Response} from '../card-board/index'
+import {Game,CBServer} from '../card-board/index'
 //import {Hand} from 
 import {RPPlayer, PokerHand, HandRank, PokerDeck} from './index'
 //import {  } from './PokerDeck';
 //import { CBServer } from './abstCBServer';
 //import { Prompt } from './abstIOMessages';
 
-class RPDrawPrompt extends Prompt{}
+class RPDrawPrompt{}
 
-class RPDrawChoice extends Response{}
+class RPDrawChoice{
+    
+}
 
-class RPDiscardPrompt extends Prompt{}
+class RPDiscardPrompt{}
 
-class RPDiscardChoice extends Prompt{}
+class RPDiscardChoice{}
+
+class RPHandNotification{
+
+
+    constructor(h: PokerHand){
+
+    }
+}
 
 export class RapPoker extends Game{
 
@@ -36,6 +46,10 @@ export class RapPoker extends Game{
         this.players.push(newPlayer);
     }
 
+    public notifyHand(p: RPPlayer){
+        this.server.notifyPlayer(p, new RPHandNotification(p.getHand()))
+    }
+
     startRound(startPlayer: RPPlayer) {
 
         
@@ -49,8 +63,8 @@ export class RapPoker extends Game{
 
     }
 
-    public processDrawChoice(drawChoice: RPDrawChoice){
-
+    public processDrawChoice(drawChoice: RPDrawChoice): boolean{
+        return true
 
     }
 
@@ -70,7 +84,7 @@ export class RapPoker extends Game{
 
     }
 
-    private breakTie(hands: Hand[]){
+    private breakTie(hands: PokerHand[]){
 
     }
 

@@ -1,5 +1,4 @@
-//namespace card_board {
-import {Card} from './Card'
+import {Card} from './index'
 
 export class Deck {
 

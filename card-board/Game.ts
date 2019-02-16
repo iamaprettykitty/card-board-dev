@@ -1,8 +1,6 @@
 
-import {Player} from './Player';
-//import {Board} from './board';
-import {CBServer} from './abstCBServer'
-// import {CardBoardIO, Action, Reaction} from './abstCardBoardIO'
+import {CBServer, Player} from './index';
+
 
 export class Game {
 
@@ -16,88 +14,55 @@ export class Game {
 
     round: number;
 
-    //board: Board;
-    
-
     server: CBServer;
 
     constructor(cbs: CBServer){
 
         this.server = cbs;
-        //this.server.readyPlayers(this.players);
-
-    }
-
-    reset(level: number){
-
-        this.round = 1;
-        //this.board = new Board(this.gameio);
-        this.curPlayer = 0;
-        this.roundStartPlayer = 0;
-
-    }
-
-    public startGame() {
-
-        //this.gameio.readyGame(this);
-        this.startRound(this.players[0]);
-
-    }
-
-    public addNewPlayer(newPlayer: Player):void {}
-
-        
     }
 
 
-    startTurn(player: Player){
+    public startGame() {}
+
+    public addNewPlayer(newPlayer: Player):void {
+        this.players.push(newPlayer);
+    }
+
+
+    // private startTurn(player: Player){
 
         
 
-    }
+    // }
 
 
-    public processAction(action: Action){
-
-        
-
-    }
-
-    
-    public processReaction(reaction: Reaction){
+    // public processTurnResult(){
 
 
 
-    }
+    // }
 
 
-    public processTurnResult(){
-
-
-
-    }
-
-
-    nextTurn(){
-        if(this.curPlayer++ >= this.players.length)
-            this.curPlayer = 0
+    // nextTurn(){
+    //     if(this.curPlayer++ >= this.players.length)
+    //         this.curPlayer = 0
             
-        this.startTurn(this.players[this.curPlayer]);
+    //     this.startTurn(this.players[this.curPlayer]);
 
-    }
+    // }
 
     
-    nextRound() {
+    // nextRound() {
 
-        this.curPlayer++;
-        if( this.curPlayer > 1 ) this.curPlayer = 0;
+    //     this.curPlayer++;
+    //     if( this.curPlayer > 1 ) this.curPlayer = 0;
 
-    }
+    // }
 
 
-    public getCurrentPlayer(): Player {
+    // public getCurrentPlayer(): Player {
         
-        return this.players[this.curPlayer];
-    }
+    //     return this.players[this.curPlayer];
+    // }
 
 }
